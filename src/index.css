@@ -4,16 +4,30 @@ dark 5-sahdes (full dark, lighter shades
 primary 5 shades (2 dark, 1-2 lighter)
 text 5 shades (prim, unavail, darker)
 
+--<theme>-<color>-<derivative>
+
 */
 
-  --dark-bg-color: #222831;
-  --dark-hl-primary: #4ecca3;
-  --dark-hl-primary-shade: #41a583;
-  --dark-hl-primary-darker: #347962;
-  --dark-title-color: #eeeeee;
-  --dark-notes-color: #bbbbbb;
-  --dark-notes-color-shade: #929292;
-  --dark-atom-hover-color: #393e46;
+  --dark-accent-100: ##348C6F;
+  --dark-accent-200: #48A989;
+  --dark-accent-300: #5BC6A2;
+  --dark-accent-400: #6FE2BC;
+  --dark-accent-500: #82FFD5;
+
+  --dark-background-100: #222831;
+  --dark-background-200: #3A4350;
+  --dark-background-300: #525E6F;
+  --dark-background-400: #6A788E;
+  --dark-background-500: #8293AD;
+
+  --dark-text-100: #FFFFFF;
+  --dark-text-200: #F7F7F7;
+  --dark-text-300: #EEEEEE;
+  --dark-text-400: #E6E6E6;
+  --dark-text-500: #DDDDDD;
+  --dark-text-600: #CCCCCC;
+  --dark-text-700: #D5D5D5;
+
   --default-font: 'Fira Mono'
 }
 
@@ -51,7 +65,7 @@ header {
   /* grid-template-areas: "header-left" "header-center" "header-right"; */
   grid-template-rows: 1fr;
   grid-template-columns: 10vw 80vw auto;
-  background-color: var(--dark-hl-primary);
+  background-color: var(--dark-background-100);
 }
 
 .header-left{
@@ -78,7 +92,7 @@ main {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 10vw 80vw auto;
-  background-color: var(--dark-bg-color);
+  background-color: var(--dark-background-100);
 }
 
 .main-left{
