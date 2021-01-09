@@ -104,10 +104,11 @@ main {
 .atomContentContainer:hover{
   background-color: var(--dark-background-200);
 }
-
-.atomContentContainer > div:active {
-  background-color: var(--dark-background-300);
-} */
+*/
+/* .atomContentContainer:hover, .atomContentContainer:focus {
+  background-color: var(--dark-background-500);
+  border-radius: 3px;
+}  */
 
 .textarea {
   vertical-align: top;
@@ -118,21 +119,30 @@ main {
   /* width: calc(100% - 10px); */
   /* width: 80%; */
   resize: none;
-  /* padding:5px 5px 5px 5px; */
-  /* margin-top: 1px; */
+  padding:5px 5px 5px 5px;
+  margin-top: 1px;
   /* margin-bottom: 4px; */
-  color: var(--dark-accent-300);
+  color: var(--dark-text-200);
   background-color: var(--dark-background-100);
   border-radius: 3px;
   font-family: var(--default-font);
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
-/* 
+
 .textarea-title {
-  font-size: large;
-} */
+  /* font-size: large; */
+  font-weight: 600;
+}
 .textarea-notes {
   font-style: italic;
   color: var(--dark-text-700);
 
+}
+
+.textarea:hover {
+  background-color: var(--dark-background-200);
+}
+
+.textarea:focus {
+  background-color: var(--dark-background-300);
 }
