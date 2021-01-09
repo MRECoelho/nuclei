@@ -1,10 +1,18 @@
 import List from './components/List'
 import Search from './components/Search'
 import Breadcrumb from './components/Breadcrumb';
+import {store} from './store/store'
+import {Provider} from 'react-redux'
+
+
 import './App.css';
 
 function App() {
+  
+ 
+
   return (
+    <Provider store={store}>
     <div className="grid-container ">
       <header>
         <div className="header-left"> header-left </div>
@@ -33,6 +41,7 @@ function App() {
         <div className="main-right"> main-right </div>
       </main>
     </div>
+    </Provider>
   );
 }
 

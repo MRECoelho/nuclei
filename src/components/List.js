@@ -1,30 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useReducer } from 'react'
+import {useEffect} from 'react'
+import {connect} from 'react-redux'
+import {fetchData} from '../store/actions'
+import {listReducer} from '../store/reducers'
+import {initialStoreState} from '../store/store'
+import {store} from '../store/store'
+import { useDispatch,  useSelector } from 'react-redux'
+import thunk from 'redux-thunk';
+// import { useDispatch } from 'react-redux'
 
 export default function List() {
-    const data = [  {id:1, title: "temp child 1", notes: "notes...", indent:0, completed: false, hidden: false},
-                    {id:2, title: "temp child 1.1", notes: "notes...", indent:1, completed: false, hidden: false},
-                    {id:3, title: "temp child 2 completed", notes: "", indent:0, completed: true, hidden: false},
-                    {id:4, title: "temp child 3", indent:0, completed: false, hidden: false},
-                    {id:5, title: "temp child 3.1", notes: "notes...", indent:1, completed: false, hidden: false},
-                    {id:6, title: "temp child 3.1.1", notes: "notes...", indent:2, completed: false, hidden: true}]
+
+    const dispatch = useDispatch()
+    const listState = useSelector(state => state.list);
+
+    useEffect(() => {
+        dispatch(fetchData())
+        // dispatch(fetchData)
+        // return () => {
+        //   cleanup
+        // }
+      }, [])
+
     return (
-        <>
+        <>  
             <ul>
-            {data.map(atom => {
-                if(atom.hidden === false){
-                    return(
-                        <li key={atom.id}>
-                            <div className="atomContentContainer">
-                                <div className="atomContentTitle">{atom.title}</div>
-                                <div className="atomContentNotes">{atom.notes}</div>
-                            </div>
-                        </li>
-                    )
-                }else{
-                    return null
-                }
-            })}
+            {listState.isLoading ? <h1> Loading data </h1> :
+                listState.listContent ? 
+                listState.listContent.map(atom => {
+                    if(atom.hidden === false){
+                        return(
+                            <li key={atom.id}>
+                                <div className="atomContentContainer">
+                                    <div className="atomContentTitle">{atom.title}</div>
+                                    <div className="atomContentNotes">{atom.notes}</div>
+                                </div>
+                            </li>
+                        )
+                    }else{
+                        return null
+                    }
+                }) :
+                null
+            }
+            
             </ul>
         </>
     )
 }
+
