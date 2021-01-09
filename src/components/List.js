@@ -25,14 +25,14 @@ export default function List() {
 
     return (
         <>  
-            <ul>
+            <ul className="listContainer">
             {listState.isLoading ? <h1> Loading data </h1> :
                 listState.listContent ? 
                 listState.listContent.map(atom => {
                     if(atom.hidden === false){
                         return(
                             <li key={atom.id}>
-                                <div className="atomContentContainer">
+                                <div className="atomContentContainer" style={{marginLeft:atom.indent*35 + 15/atom.indent}}>
                                     <div className="atomContentTitle">{atom.title}</div>
                                     <div className="atomContentNotes">{atom.notes}</div>
                                 </div>

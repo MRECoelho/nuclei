@@ -45,6 +45,7 @@ body, #root {
     sans-serif; /* backup fonts 'provided' by react*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--dark-text-200);
 }
 
 code {
@@ -65,16 +66,9 @@ header {
   /* grid-template-areas: "header-left" "header-center" "header-right"; */
   grid-template-rows: 1fr;
   grid-template-columns: 10vw 80vw auto;
-  background-color: var(--dark-background-100);
+  background-color: var(--dark-accent-300);
 }
 
-.header-left{
-  background-color: lightblue; /* TEMP */
-}
-
-.header-center{
-  background-color: violet; /* TEMP */
-}
 
 .header-container {
   display: grid;
@@ -82,9 +76,6 @@ header {
   grid-template-columns: 1fr;
 }
 
-.header-right{
-  background-color: aquamarine; /* TEMP */
-}
 
 main {
   grid-area: main;
@@ -95,14 +86,23 @@ main {
   background-color: var(--dark-background-100);
 }
 
-.main-left{
-  background-color: lime; /* TEMP */
+
+.listContainer{
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.main-center{
-  background-color: salmon; /* TEMP */
+
+.atomContentNotes, .atomContentTitle, .atomContentContainer{
+  border-radius: 3px;
 }
 
-.main-right{
-  background-color: gold; /* TEMP */
+.atomContentContainer:hover{
+  background-color: var(--dark-background-200);
 }
+
+.atomContentContainer > div:active {
+  background-color: var(--dark-background-300);
+}
+
