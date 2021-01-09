@@ -2,6 +2,9 @@ export const FETCH_DATA = 'FETCH_DATA'
 export const FETCHING_DATA_SUCCES = 'FETCHING_DATA_SUCCES'
 export const FETCHING_DATA_FAILED = 'FETCHING_DATA_FAILED'
 
+export const FOCUS_ATOM = 'FOCUS_ATOM'
+export const BLUR_ATOM = 'BLUR_ATOM'
+
 export const ADD_ATOM = "ADD_ATOM"
 export const DELETE_ATOM = "DELETE_ATOM"
 export const HIDE_CHILDREN = "HIDE_CHILDREN"

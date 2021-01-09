@@ -10,8 +10,8 @@ export const initialStoreState = {
         listContent: [],
         filteredListContent: [],
         selectedAtomIds: [],
-        selectedAtom: '',
-        selectedField: '',
+        focussedAtomId: '',
+        focussedField: '',
         loadingData: false,
         errorMessage: '',
     }

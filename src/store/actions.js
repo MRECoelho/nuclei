@@ -8,7 +8,7 @@ const listName = 'devlist'
 
 
 
-export const fetchData = (params) => async (dispatch) => {
+export const fetchData = () => async (dispatch) => {
     dispatch({type: types.FETCH_DATA})
     try{
         const db = new Localbase(databaseName)
@@ -30,6 +30,31 @@ export const fetchData = (params) => async (dispatch) => {
         })
     }
 }
+
+export const focusAtom = (focussedAtomId, focussedField) => (dispatch) => {
+    dispatch(
+        {
+            type: types.FOCUS_ATOM,
+            payload: {
+                focussedAtomId,
+                focussedField
+            }
+        }
+    )
+}
+
+export const blurAtom = (focussedAtomId, focussedField) => (dispatch) => {
+    dispatch(
+        {
+            type: types.BLUR_ATOM,
+            payload: {
+                focussedAtomId,
+                focussedField
+            }
+        }
+    )
+}
+
 
 // atom types
 export const hide_children = (param) => async (dispatch) => {}
