@@ -33,7 +33,28 @@ export const listReducer = (state={}, action) => {
                 // no action needed, focus action has overwritten the old state
                 return { ...state }
             }
-            
+        case types.EDIT_ATOM_TITLE:
+            let editedTitle = state.listContent.map(atom => {
+                                    if (atom.id === action.payload.atomId){    
+                                        return { ...atom, title: action.payload.title}
+                                    } else {
+                                        return atom
+                                    }
+            })  
+            return{ ...state,
+                listContent: editedTitle
+            }
+        case types.EDIT_ATOM_NOTES:
+            let editedNotes = state.listContent.map(atom => {
+                                    if (atom.id === action.payload.atomId){    
+                                        return { ...atom, notes: action.payload.notes}
+                                    } else {
+                                        return atom
+                                    }
+            })  
+            return{ ...state,
+                listContent: editedNotes
+            }
         default:
             return state
     }

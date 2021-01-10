@@ -56,6 +56,7 @@ export const blurAtom = (focussedAtomId, focussedField) => (dispatch) => {
 }
 
 
+
 // atom types
 export const hide_children = (param) => async (dispatch) => {}
 export const unhide_children = (param) => async (dispatch) => {}
@@ -65,8 +66,25 @@ export const complete_atom = (param) => async (dispatch) => {}
 export const uncomplete_atom = (param) => async (dispatch) => {}
 export const indent_subtree = (param) => async (dispatch) => {}
 export const unindent_subtree = (param) => async (dispatch) => {}
-export const edit_atom_title = (param) => async (dispatch) => {}
-export const edit_atom_notes = (param) => async (dispatch) => {}
+export const editAtomTitle = (atomId, title) => async (dispatch) => {
+    dispatch({
+        type: types.EDIT_ATOM_TITLE,
+        payload:{
+            atomId,
+            title
+        }
+    })
+}
+
+export const editAtomNotes = (atomId, notes) => async (dispatch) => {
+    dispatch({
+        type: types.EDIT_ATOM_NOTES,
+        payload:{
+            atomId,
+            notes
+        }
+    })
+}
 
 // list types
 export const add_atom = (param) => async (dispatch) => {}
