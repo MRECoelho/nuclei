@@ -66,25 +66,50 @@ export const complete_atom = (param) => async (dispatch) => {}
 export const uncomplete_atom = (param) => async (dispatch) => {}
 export const indent_subtree = (param) => async (dispatch) => {}
 export const unindent_subtree = (param) => async (dispatch) => {}
-export const editAtomTitle = (atomId, title) => async (dispatch) => {
-    dispatch({
-        type: types.EDIT_ATOM_TITLE,
-        payload:{
-            atomId,
-            title
-        }
-    })
+// export const editAtomTitle = (atomId, title) => async (dispatch) => {
+
+//     // TODO
+//     // async call to db
+
+//     dispatch({
+//         type: types.EDIT_ATOM_TITLE,
+//         payload:{
+//             atomId,
+//             title
+//         }
+//     })
+// }
+
+export const editAtomContent = (atomId, content, name, setContent) => async (dispatch) => {
+
+    // TODO
+    // async call to db
+    
+    setContent(content)  //use this to set the notes correctly, when db call fails
+    
+    if (name === "title"){
+        dispatch({
+            type: types.EDIT_ATOM_TITLE,
+            payload:{
+                atomId,
+                title: content
+            }
+        })
+    } else if (name === "notes"){
+        dispatch({
+            type: types.EDIT_ATOM_NOTES,
+            payload:{
+                atomId,
+                notes: content
+            }
+        })
+    } else {
+        // throw err
+    }
+
 }
 
-export const editAtomNotes = (atomId, notes) => async (dispatch) => {
-    dispatch({
-        type: types.EDIT_ATOM_NOTES,
-        payload:{
-            atomId,
-            notes
-        }
-    })
-}
+
 
 // list types
 export const add_atom = (param) => async (dispatch) => {}

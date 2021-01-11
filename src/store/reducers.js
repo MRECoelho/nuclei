@@ -45,6 +45,7 @@ export const listReducer = (state={}, action) => {
                 listContent: editedTitle
             }
         case types.EDIT_ATOM_NOTES:
+            console.log("super expensive executed")
             let editedNotes = state.listContent.map(atom => {
                                     if (atom.id === action.payload.atomId){    
                                         return { ...atom, notes: action.payload.notes}

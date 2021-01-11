@@ -66,10 +66,14 @@ code {
 header {
   grid-area: header;
   display: grid;
-  /* grid-template-areas: "header-left" "header-center" "header-right"; */
   grid-template-rows: 1fr;
   grid-template-columns: 10vw 80vw auto;
   background-color: var(--dark-accent-300);
+  /* TODO: future impl? */
+  /* background: rgb(91,198,162); */
+  /* background: linear-gradient(20deg, rgba(91,198,162,1) 44%, rgba(0,212,255,1) 100%);  */
+  /* box-shadow: 0px 5px 10px 2px rgb(0, 0, 0); */
+  /* box-shadow: inset 0 -10px 30px #ffffff4b; */
 }
 
 

@@ -10,7 +10,7 @@ export default function List() {
     const dispatch = useDispatch()
     const listState = useSelector(state => state.list);
 
-    store.subscribe( () => {console.log("deteted change: ", store.getState())})
+    // store.subscribe( () => {console.log("deteted change: ", store.getState())})
 
     useEffect(() => {
         dispatch(fetchData())
