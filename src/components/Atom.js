@@ -1,7 +1,8 @@
 import React, {useState, useCallback} from 'react'
-import {focusAtom, blurAtom, editAtomTitle, editAtomContent} from '../store/actions'
-import TextareaAutosize from 'react-textarea-autosize'
+import {focusAtom, blurAtom, editAtomContent} from '../store/actions'
+// import TextareaAutosize from 'react-textarea-autosize'
 import AtomControl from './AtomControl'
+import Textarea from './Textarea'
 import {debounce} from 'lodash'
 
 const Atom = props => {
@@ -29,42 +30,42 @@ const Atom = props => {
         // API call fails and the value needs to be reset stay in sync with
         // backend data.
 		debouncedEdit(nextValue, name, setContent)
-	}
+    }
+    
+    const textAreaProps = { 
+        dispatch:props.dispatch,
+        atomId:props.atom.id,
+        handleChange:handleChange, 
+    }
+
+    const createTextArea = (name, value, setContent) => {
+        const textAreaProps = { 
+            dispatch:props.dispatch,
+            atomId:props.atom.id,
+            handleChange:handleChange,
+        }
+        return(
+            <Textarea
+                    name={name}
+                    value={value}
+                    setContent={setContent}
+                    { ...textAreaProps }
+            ></Textarea>
+        )
+    }
 
     return (
         <div className="atomContainer" style={{marginLeft:props.atom.indent*35 + 15/(1+props.atom.indent)}}>
             <AtomControl></AtomControl>
             <div className="atomContentContainer">
-                <TextareaAutosize
-                    name="title"
-                    className="textarea textarea-title"
-                    value={title}
-                    minRows={1}
-                    spellCheck="false"
-                    onFocus={e =>  props.dispatch(focusAtom(props.atom.id, e.target.name))}
-                    onBlur={e => props.dispatch(blurAtom(props.atom.id, e.target.name))}
-                    onChange={ e => handleChange(e, setTitle) }
-                    
-                    // ref={ref}
-                ></TextareaAutosize>
-                {props.atom.notes?
-                <TextareaAutosize
-                    name="notes"
-                    className="textarea textarea-notes"
-                    value={notes}
-                    minRows={1}
-                    spellCheck="false"
-                    onFocus={e =>  props.dispatch(focusAtom(props.atom.id, e.target.name))}
-                    onBlur={e => props.dispatch(blurAtom(props.atom.id, e.target.name))}
-                    onChange={ e => handleChange(e, setNotes) }
-                    
-                    // ref={ref}
-                ></TextareaAutosize> :
-                null
-                }
+                {createTextArea("title", title, setTitle)}
+
+                {props.atom.notes ? createTextArea("notes", notes, setNotes) : null}
             </div>
         </div>
     )
 }
+
+
 
 export default React.memo(Atom)
