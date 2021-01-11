@@ -5,46 +5,30 @@ import AtomControl from './AtomControl'
 import {debounce} from 'lodash'
 
 const Atom = props => {
-
     // impl local State for title and Notes
     const [title, setTitle] = useState(props.atom.title)
     const [notes, setNotes] = useState(props.atom.notes)
 
-    // const editTitleWrapper = (atomId, e) => {
-
-    //     // update local state
-    //     // call debounce fn
-
-    //     props.dispatch(editAtomTitle(atomId, e.target.value))
-    // }
-
-
-    // const editNotesWrapper = (atomId, e) => {
-
-    //     // update local state
-    //     // call debounce fn
-
-    //     props.dispatch(editAtomContent(atomId, e.target.value))
-    // }
-
     const debouncedEdit = useCallback(
-		debounce((nextValue, name, fn) => {
-            // console.log(setNotes)
-            props.dispatch(editAtomContent(props.atom.id, nextValue, name, fn))
-            // saveToDb(nextValue)
+		debounce((nextValue, name, setContent) => {
+            props.dispatch(editAtomContent(props.atom.id, nextValue, name, setContent))
         }, 500),
-		[], // will be created only once initially
-	);
+		[], 
+	)
 
-    const handleChange = (event, fn) => {
+    const handleChange = (event, setContent) => {
+        // This function handles the local state and calls the debounced action.
+        // TThis enables fast front end change and low impact on expensive API calls.
         const nextValue = event.target.value
         const name = event.target.name
-        console.log("fn ==> ", event.target.name)
-        // console.log("sn ==> ", setNotes)
-		fn(nextValue)
+        setContent(nextValue)
+        
 		// Even though handleChange is created on each render and executed
-		// it references the same debouncedSave that was created initially
-		debouncedEdit(nextValue, name, fn)
+        // it references the same debouncedSave that was created initially.
+        // The setContent function is used as a parameter in case some 
+        // API call fails and the value needs to be reset stay in sync with
+        // backend data.
+		debouncedEdit(nextValue, name, setContent)
 	}
 
     return (

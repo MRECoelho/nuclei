@@ -66,22 +66,12 @@ export const complete_atom = (param) => async (dispatch) => {}
 export const uncomplete_atom = (param) => async (dispatch) => {}
 export const indent_subtree = (param) => async (dispatch) => {}
 export const unindent_subtree = (param) => async (dispatch) => {}
-// export const editAtomTitle = (atomId, title) => async (dispatch) => {
-
-//     // TODO
-//     // async call to db
-
-//     dispatch({
-//         type: types.EDIT_ATOM_TITLE,
-//         payload:{
-//             atomId,
-//             title
-//         }
-//     })
-// }
 
 export const editAtomContent = (atomId, content, name, setContent) => async (dispatch) => {
-
+    // write comments / doc string?
+    // conent = 
+    // name = 
+    // setContent = 
     // TODO
     // async call to db
     
