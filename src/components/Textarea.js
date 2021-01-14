@@ -7,7 +7,7 @@ const Textarea = (props) => {
     return (
         <TextareaAutosize
                     name={props.name}
-                    className={`textarea textarea-${props.name}`}
+                    className={`textarea textarea-${props.name} ${props.completed}`}
                     value={props.value}
                     minRows={1}
                     spellCheck="false"
@@ -16,7 +16,7 @@ const Textarea = (props) => {
                     onChange={ e => props.handleChange(e, props.setContent) }
                     
                     // ref={ref}
-        ></TextareaAutosize> 
+        ></TextareaAutosize>
     )
 }
 

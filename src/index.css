@@ -64,6 +64,7 @@ code {
 }
 
 header {
+  /* position: fixed; */
   grid-area: header;
   display: grid;
   grid-template-rows: 1fr;
@@ -106,16 +107,22 @@ main {
 
 .textarea {
   vertical-align: top;
+  /* justify-content: left; */
+  /* align-content: flex-end; */
+  /* align-self: flex-end; */
+  /* align-items: flex-end; */
+  /* justify-content: right; */
+   justify-self: right;
   outline: none;
   border: none;
   height: 100%;
   /* width: 100%; */
-  width: calc(100% - 15px);
+  width: calc(100% - 11px);
   /* width: 80%; */
   resize: none;
   padding:5px 5px 5px 5px;
-  margin-top: 1px;
-  /* margin-bottom: 4px; */
+  /* margin-top: 1px; */
+  /* margin-bottom: 1px; */
   color: var(--dark-text-200);
   background-color: var(--dark-background-100);
   border-radius: 3px;
@@ -143,5 +150,10 @@ main {
 
 .atomcontrol{
   width: 15px;
+  display: block;
   font-size: 1.6rem;
+}
+
+.completed{
+  text-decoration: line-through;
 }

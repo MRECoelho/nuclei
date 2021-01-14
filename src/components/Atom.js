@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react'
-import {focusAtom, blurAtom, editAtomContent} from '../store/actions'
+import {editAtomContent} from '../store/actions'
 // import TextareaAutosize from 'react-textarea-autosize'
 import AtomControl from './AtomControl'
 import Textarea from './Textarea'
@@ -13,7 +13,7 @@ const Atom = props => {
     const debouncedEdit = useCallback(
 		debounce((nextValue, name, setContent) => {
             props.dispatch(editAtomContent(props.atom.id, nextValue, name, setContent))
-        }, 500),
+        }, 200),
 		[], 
 	)
 
@@ -23,7 +23,6 @@ const Atom = props => {
         const nextValue = event.target.value
         const name = event.target.name
         setContent(nextValue)
-        
 		// Even though handleChange is created on each render and executed
         // it references the same debouncedSave that was created initially.
         // The setContent function is used as a parameter in case some 
@@ -31,18 +30,13 @@ const Atom = props => {
         // backend data.
 		debouncedEdit(nextValue, name, setContent)
     }
-    
-    const textAreaProps = { 
-        dispatch:props.dispatch,
-        atomId:props.atom.id,
-        handleChange:handleChange, 
-    }
 
-    const createTextArea = (name, value, setContent) => {
+    const createTextAreaComponent = (name, value, setContent) => {
         const textAreaProps = { 
             dispatch:props.dispatch,
             atomId:props.atom.id,
             handleChange:handleChange,
+            completed: props.atom.completed? "completed" :  ""
         }
         return(
             <Textarea
@@ -55,14 +49,15 @@ const Atom = props => {
     }
 
     return (
-        <div className="atomContainer" style={{marginLeft:props.atom.indent*35 + 15/(1+props.atom.indent)}}>
-            <AtomControl></AtomControl>
+        <div className={"atomContainer"} style={{marginLeft:props.atom.indent*35 + 15/(1+props.atom.indent)}}>
+            <AtomControl atomId={props.atom.id} dispatch={props.dispatch}  />
+            
             <div className="atomContentContainer">
-                {createTextArea("title", title, setTitle)}
+                {createTextAreaComponent("title", title, setTitle)}
 
-                {props.atom.notes ? createTextArea("notes", notes, setNotes) : null}
+                {props.atom.notes ? createTextAreaComponent("notes", notes, setNotes) : null}
             </div>
-        </div>
+         </div>
     )
 }
 
