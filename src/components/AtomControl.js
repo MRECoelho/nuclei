@@ -3,7 +3,7 @@ import {markSubtreeComplete, deleteAtom, addAtom, markSubtreeUncomplete, indentS
 
 const AtomControl = (props) => {
     return (
-        <div className="handle" style={{marginTop:10, opacity:0.8, width: 12, height: 12,  background: "var(--dark-accent-300)", borderRadius:6}} >
+        <div className="handle" style={{marginTop:12, opacity:0.8, width: 10, height: 10,  background: "var(--dark-accent-300)", borderRadius:5}} >
    
     </div>
     )
