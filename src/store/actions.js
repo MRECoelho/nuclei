@@ -17,9 +17,7 @@ export const fetchData = () => async (dispatch) => {
         // async function fillfunc () {
         //     // let arr =[]
         //     // arr.push([...listContent])
-        //     console.log("yay")
         //     for (let index = 0; index < 100; index++) {
-        //         console.log("yay")
         //         let newId = uuidv4()
         //         let newAtom = {title: "filler",
         //         notes: "",
@@ -44,11 +42,11 @@ export const fetchData = () => async (dispatch) => {
             type: types.FETCHING_DATA_SUCCES,
             payload: {
                 listName,
-                listContent: listContent.slice(0,100)
+                listContent: listContent
             }
         })
     } catch {
-        console.log("shoot")
+        console.log("error")
         dispatch ({
             type: types.FETCHING_DATA_FAILED,
             payload: "error message"
@@ -173,7 +171,6 @@ export const editAtomContent = (atomId, content, name, setContent) => async (dis
     // async call to db
     
     // setContent(content)  //use this to set the notes correctly, when db call fails
-    console.log("lag")
     if (name === "title"){
         dispatch({
             type: types.EDIT_ATOM_TITLE,
