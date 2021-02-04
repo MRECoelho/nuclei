@@ -24,3 +24,7 @@ const rootReducer = combineReducers({
 export const store = createStore(   rootReducer, 
                                     initialStoreState, 
                                     composeEnhancer(applyMiddleware(thunk)))
+
+export const getCurrentList = () => {
+    return store.list.listContent
+}

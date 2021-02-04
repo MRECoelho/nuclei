@@ -8,12 +8,33 @@ text 5 shades (prim, unavail, darker)
 
 */
 
-  --dark-accent-100: ##348C6F;
+  --dark-accent-100: #348C6F;
   --dark-accent-200: #48A989;
   --dark-accent-300: #5BC6A2;
   --dark-accent-400: #6FE2BC;
   --dark-accent-500: #82FFD5;
 
+  --dark-contrast-300: #c65ba2;
+
+  --dark-accent-100-a80: hsla(160, 46%, 38%, 0.8);
+  --dark-accent-200-a80: rgba(72, 168, 136, 0.8);
+  --dark-accent-300-a80: rgba(93, 198, 163, 0.8);
+  --dark-accent-400-a80: hsla(160, 66%, 66%, 0.8);
+  --dark-accent-500-a80: hsla(160, 100%, 75%, 0.8);
+
+  --dark-accent-100-a60: hsla(160, 46%, 38%, 0.6);
+  --dark-accent-200-a60: rgba(72, 168, 136, 0.6);
+  --dark-accent-300-a60: rgba(93, 198, 163, 0.6);
+  --dark-accent-400-a60: hsla(160, 66%, 66%, 0.6);
+  --dark-accent-500-a60: hsla(160, 100%, 75%, 0.6);
+
+  --dark-accent-100-a40: hsla(160, 46%, 38%, 0.4);
+  --dark-accent-200-a40: rgba(72, 168, 136, 0.4);
+  --dark-accent-300-a40: rgba(93, 198, 163, 0.4);
+  --dark-accent-400-a40: hsla(160, 66%, 66%, 0.4);
+  --dark-accent-500-a40: hsla(160, 100%, 75%, 0.4);
+
+  --dark-background-0: #171c22;
   --dark-background-100: #222831;
   --dark-background-200: #3A4350;
   --dark-background-300: #525E6F;
@@ -70,13 +91,36 @@ header {
   grid-template-rows: 1fr;
   grid-template-columns: 10vw 80vw auto;
   background-color: var(--dark-accent-300);
+
   /* TODO: future impl? */
-  /* background: rgb(91,198,162); */
-  /* background: linear-gradient(20deg, rgba(91,198,162,1) 44%, rgba(0,212,255,1) 100%);  */
-  /* box-shadow: 0px 5px 10px 2px rgb(0, 0, 0); */
-  /* box-shadow: inset 0 -10px 30px #ffffff4b; */
+  /* background: rgb(91,198,162);
+  background: linear-gradient(20deg, rgba(91,198,162,1) 44%, rgba(0,212,255,1) 100%); 
+  box-shadow: 0px 5px 10px 2px rgb(0, 0, 0);
+  box-shadow: inset 0 -10px 30px #ffffff4b; */
+
+  background: linear-gradient(270deg, #5bc6a2, #5bc5c6, #5bc6a2, #5bc684);
+    background-size: 800% 800%;
+
+    -webkit-animation: HeaderBackgroundAnimation 60s ease infinite;
+    -moz-animation: HeaderBackgroundAnimation 60s ease infinite;
+    animation: HeaderBackgroundAnimation 60s ease infinite;
 }
 
+@-webkit-keyframes HeaderBackgroundAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes HeaderBackgroundAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes HeaderBackgroundAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
 
 .header-container {
   display: grid;
@@ -87,31 +131,52 @@ header {
 
 main {
   grid-area: main;
-  /* height: 100%; */
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 10vw 80vw auto;
   background-color: var(--dark-background-100);
 }
 
+/* #list {
+  box-shadow: 0px 0px 10px black;
+  margin-bottom: 20px;
+  padding: 10px;
+} */
+
+/* .main-left{
+  background-color: var(--dark-background-0);
+}
+
+.main-right{
+  background-color: var(--dark-background-0);
+} */
+
+
+/* .header-left{
+  background-color: var(--dark-background-0);
+}
+
+.header-right{
+  background-color: var(--dark-background-0);
+} */
+
 
 .listContainer{
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding-left: 0px;
+
 }
 .atomContainer {
   display: grid;
     grid-template-columns: 15px auto;
 }
+.atomContentContainer{
+  padding-right: 35px;
+}
 
 .textarea {
   vertical-align: top;
-  /* justify-content: left; */
-  /* align-content: flex-end; */
-  /* align-self: flex-end; */
-  /* align-items: flex-end; */
-  /* justify-content: right; */
    justify-self: right;
   outline: none;
   border: none;
@@ -128,15 +193,19 @@ main {
   border-radius: 3px;
   font-family: var(--default-font);
   font-size: 1.6rem;
+  margin: 0;
+
 }
 
 .textarea-title {
-  /* font-size: large; */
   font-weight: 600;
 }
+
 .textarea-notes {
   font-style: italic;
   color: var(--dark-text-700);
+  
+  margin-top: 2px; /* correcting for border around atomContainer*/
 
 }
 
@@ -154,6 +223,55 @@ main {
   font-size: 1.6rem;
 }
 
+.handle{
+  margin-top:12px; 
+  margin-left: 2px; 
+  opacity:0.8; 
+  width: 10px; 
+  height: 10px;  
+  border-radius:5px;
+  /* cursor:grab; */
+  cursor: pointer;
+  background: var(--dark-accent-100);   
+}
+
+.handle.grab{
+  cursor:grab;
+}
+
+.handle:hover{
+  background: var(--dark-accent-300);   
+
+}
+
 .completed{
   text-decoration: line-through;
+}
+
+.dragTreeSelected .textarea {
+  background-color: var(--dark-background-200);
+}
+.dragTreeSelected  .handle  {
+  background-color: var(--dark-contrast-300);
+}
+
+.listRow{
+  border: transparent;
+  border-style: solid;
+  border-width: 1px 0 1px 0;
+}
+
+.dragOverTop{
+border-top: 1px solid var(--dark-accent-300);
+}
+
+.dragOverBottom{
+  border-bottom: 1px solid var(--dark-accent-300);
+}
+
+
+.fun{
+
+  background-color: #c65ba2;
+  color: orange;
 }

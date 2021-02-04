@@ -4,25 +4,33 @@ export const getSubTree = (list, atomId) => {
     let refIndent = null
     let start = false
     let skip = false
-    let subtree = list.slice().filter((atom, index) => {
+    let subtree = list.filter((atom, index) => {
+        let include = false
         if(skip === false){
             if(atom.id === atomId){
                 startIndex = index
                 refIndent = atom.indent
                 start = true
-                return atom
+                include = true
             } else if ( start === true && skip === false){
                 if (atom.indent > refIndent) {
-                    return atom
+                    include = true
                 } else {
                     skip = true
                 }
             } 
         }
+        return include
     })
 
     const stopIndex = startIndex + subtree.length - 1
     return {subtree, startIndex, stopIndex} 
+}
+
+
+
+export const isAtomInSubTree = (atom, subtree) => {
+    return subtree.map(atom => atom.id).includes(atom.id)
 }
 
 // export const getSubTreeRange = (list, atomId) => {
@@ -32,13 +40,13 @@ export const getSubTree = (list, atomId) => {
 //     return {startIndex, stopIndex}
 // }
 
-const indentAtom = (atom) => {
-    return { ...atom, indent: atom.indent + 1}
-}
+// const indentAtom = (atom) => {
+//     return { ...atom, indent: atom.indent + 1}
+// }
 
-const indentTree = (list) => {
-    return list.map(atom => indentAtom(atom))
-}
+// const indentTree = (list) => {
+//     return list.map(atom => indentAtom(atom))
+// }
 
 export const tryIndent = (list, atomId) => {
     const {subtree, startIndex, stopIndex} = getSubTree(list, atomId)
