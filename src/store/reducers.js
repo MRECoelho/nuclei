@@ -134,15 +134,18 @@ export const listReducer = (state={}, action) => {
             return { ...state, listContent: slice}
 
         case types.DELETE_ATOM:
-            return { ...state, listContent: state.listContent.filter(atom => atom.id !== action.payload && atom)}
+            return { ...state, listContent: state.listContent.filter(atom => atom.id !== action.payload)}
         
         case types.DELETE_SUBTREE:
             return { ...state, listContent: state.listContent.filter(atom => {
-                if (!action.payload || atom.id !== action.payload[0]){
-                    return atom
-                } else {
-                    action.payload.shift()
-                }
+                    return !action.payload.includes(atom.id)
+                
+
+                // if (!action.payload || atom.id !== action.payload[0]){
+                //     return atom
+                // } else {
+                //     action.payload.shift()
+                // }
             })}
 
         case types.NO_EMPTY_LIST:

@@ -42,7 +42,7 @@ export const fetchData = () => async (dispatch) => {
             type: types.FETCHING_DATA_SUCCES,
             payload: {
                 listName,
-                listContent: listContent
+                listContent: listContent.slice(0,100)
             }
         })
     } catch {
@@ -55,6 +55,7 @@ export const fetchData = () => async (dispatch) => {
 }
 
 export const focusAtom = (focussedAtomId, focussedField) => (dispatch) => {
+    
     dispatch(
         {
             type: types.FOCUS_ATOM,
