@@ -1,12 +1,10 @@
 # Nuclei
 _A note making app inspired by workflowy._
 
-
 ## Getting started
 If (you're not familiar with workflowy and) you like to work with lists that support a hierarchical structure, i.e. parent child relations, this might be for you.
 This app is created with React and supports drag operations and keyboard short cuts to create and adjust your list to your liking. Finished all items on your list? Mark it complete or delete the that part of the list.
 Currently the list is not persistent and lives in the DOM, support for IndexedDB is on its way.
-
 
 ### Navigate the list
 Also support for keyboard navigation. Use the 'ArrowUp' or 'ArrowDown' to select the previous or next atom  respectively.
@@ -28,7 +26,6 @@ To prevent clutter you can hide parts of your list. Use the `ctrl + ArrowLeft` k
 
 ### Delete atom
 Deleting an atom can be done be deleting all the text. To delete an atom and all its children, you'll need to use the _force delete_ command (`ctrl + backspace`).
-
 
 ### Keyboard shortcuts
 |Command|Shortcut|
