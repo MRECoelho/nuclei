@@ -51,8 +51,6 @@ const Atom = props => {
         )
     }
 
-    
-
     return (
         <div className={"atomContainer"} style={{marginLeft:atom.indent*35 + 20/(1+atom.indent)}}>
 

@@ -272,16 +272,17 @@ export const toNotes = () => async (dispatch, getState) => {
 }
 
 export const deleteActions = (force=false) => async (dispatch, getState) => {
-    const {focussedAtomId, focussedField} = getState().list
+    const {focussedAtomId, focussedField, listContent} = getState().list
 
     if( focussedField === "notes"){
         dispatch(deleteNotes(focussedAtomId))
     } else {
-        const {listContent} = getState().list
-        const atom  = listContent.find(atom => atom.id === focussedField)
-        if (force || !atom.notes){
+        const {subtree, startIndex, stopIndex} = getSubTree(listContent, focussedAtomId)
+        const atom = subtree[0]
+        const noChildren = startIndex === stopIndex
+        const noNotes = atom.notes === undefined || atom.notes ===""
+        if (force || (noChildren && noNotes)){
             dispatch(deleteAtom(focussedAtomId, force))
-            // 
         }
 
     }
