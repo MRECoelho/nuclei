@@ -29,7 +29,7 @@ export default function List() {
 
 	return (
 		<>
-			  {console.log("render: list")}
+			  {/* {console.log("render: list")} */}
 				{listState.loadingData ? <h1> Loading data </h1> :
 				listState.listContent ? 
 				<DragContext list = {listState.listContent}>
