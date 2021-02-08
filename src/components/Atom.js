@@ -8,9 +8,6 @@ const Atom = props => {
 
     const {atom} = props
     const dispatch = props.dispatch
-    
-    // const [title, setTitle] = useState(atom.title)
-    // const [notes, setNotes] = useState(atom.notes)
 
     const debouncedEdit = useCallback( () => {
 		debounce((nextValue, name, setContent) => {
@@ -65,41 +62,13 @@ const Atom = props => {
                 atom={atom} 
                 
             />
-   
-            {/* <TextareaAutosize 
-                    name="title"
-                    className={`textarea textarea-title ${atom.completed}`}
-                    value={title}
-                    minRows={1}
-                    spellCheck="false"
-                    onFocus={e => dispatch(focusAtom(atom.id, e.target.name))}
-                    onBlur={e => dispatch(blurAtom(atom.id, e.target.name))}
-                    onChange={ e => handleChange(e, setTitle) }
-                ></TextareaAutosize>
-            {atom.notes? 
-<TextareaAutosize 
-                    name="notes"
-                    className={`textarea textarea-notes ${props.completed}`}
-                    value={notes}
-                    minRows={1}
-                    spellCheck="false"
-                    onFocus={e => dispatch(focusAtom(atom.id, e.target.name))}
-                    onBlur={e => dispatch(blurAtom(atom.id, e.target.name))}
-                    onChange={ e => handleChange(e, setNotes) }
-                ></TextareaAutosize>
-        : null
-        } */}
             
             <div className="atomContentContainer">
                 {createTextAreaComponent("title", atom.title)}
 
                 {atom.notes !== undefined ? createTextAreaComponent("notes", atom.notes ) : null}
                 
-            
-
             </div>
-
-
          </div>
     )
 }
