@@ -62,7 +62,7 @@ const Atom = props => {
     return (
         <div className={"atomContainer"} style={{marginLeft:atom.indent*35 + 20/(1+atom.indent)}}>
 
-            {console.log("render: ", atom.id)}
+            {/* {console.log("render: ", atom.id)} */}
             
             <AtomControl 
                 atom={atom} 

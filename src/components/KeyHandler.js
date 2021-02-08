@@ -11,16 +11,16 @@ const KeyHandler = props => {
 
     const keyMap = {
         ADD_ATOM: "ctrl+enter",
-        // DELETE_ATOM: "Shift + Control + Backspace",
-        COLLAPSE_ATOM: "alt+ArrowLeft",
-        UNCOLLAPSE_ATOM: "alt+ArrowRight",
+        COLLAPSE_ATOM: "ctrl+ArrowLeft",
+        UNCOLLAPSE_ATOM: "ctrl+ArrowRight",
         INDENT_ATOM: "tab",
         OUTDENT_ATOM: "shift+tab",
         TO_PREVIOUS_ATOM: "ArrowUp",
         TO_NEXT_ATOM: "ArrowDown",
-        TO_NOTES:"alt+enter",
+        TO_NOTES:"shift+enter",
         DELETE_ACTIONS: "backspace",
         FORCE_DELETE_ACTIONS: "ctrl+backspace",
+        // CONSOLE:"ctrl+`" // FUTURE IMPL: add more advanced commands, vim like behaviour
  
         // MOVE_ATOM_UP: "ctrl+shift+ArrowUp",
         // MOVE_ATOM_DOWN: "ctrl+shift+ArrowDown",
@@ -51,7 +51,7 @@ const KeyHandler = props => {
           
           if(event.target.value ==="") {dispatch(deleteActions())} },[dispatch],),
         FORCE_DELETE_ACTIONS: useCallback((event) => {  if(event.target.value ==="") {dispatch(deleteActions(true))} },[dispatch],),
-
+        // CONSOLE:  useCallback((event) => {  console.log("entering console") },[],),
         // OUTDENT_ATOM:  useCallback((event) => { event.preventDefault();console.log("outdent atom called") }, []),
         // MOVE_ATOM_UP:  useCallback((event) => { event.preventDefault();console.log("move up atom called") }, []),
         // MOVE_ATOM_DOWN:  useCallback((event) => { event.preventDefault();console.log("move down atom called") }, []),
