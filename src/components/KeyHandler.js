@@ -45,7 +45,7 @@ const KeyHandler = props => {
         TO_NEXT_ATOM:  useCallback((event) => { event.preventDefault(); dispatch(toNextAtom())}, [dispatch]),
         TO_NOTES:  useCallback((event) => { event.preventDefault(); dispatch(toNotes())}, [dispatch]),
         DELETE_ACTIONS: useCallback((event) => { if(event.target.value ==="") {dispatch(deleteActions())} },[dispatch],),
-        FORCE_DELETE_ACTIONS: useCallback((event) => {  if(event.target.value ==="") {dispatch(deleteActions(true))} },[dispatch],),
+        FORCE_DELETE_ACTIONS: useCallback((event) => { event.preventDefault(); dispatch(deleteActions(true)) },[dispatch],),
         // CONSOLE:  useCallback((event) => {  console.log("entering console") },[],),
         // OUTDENT_ATOM:  useCallback((event) => { event.preventDefault();console.log("outdent atom called") }, []),
         // MOVE_ATOM_UP:  useCallback((event) => { event.preventDefault();console.log("move up atom called") }, []),

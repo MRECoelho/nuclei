@@ -5,7 +5,6 @@ import {store} from './store/store'
 import {Provider} from 'react-redux'
 import {configure} from 'react-hotkeys';
 import './App.css';
-import { HotKeys } from 'react-hotkeys'
 import GlobalHotKeys  from './components/KeyHandler'
 function App() {
   
