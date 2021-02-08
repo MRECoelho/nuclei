@@ -22,3 +22,5 @@ export const EDIT_ATOM_TITLE = "EDIT_ATOM_TITLE"
 export const EDIT_ATOM_NOTES = "EDIT_ATOM_NOTES"
 
 export const REORDER_LIST = "REORDER_LIST"
+
+export const DELETE_NOTES = "DELETE_NOTES"

@@ -1,6 +1,7 @@
 import * as types from './types'
 
 export const listReducer = (state={}, action) => {
+    
     switch(action.type){
         case types.FETCH_DATA:
             return { ...state, loadingData: true }
@@ -71,7 +72,6 @@ export const listReducer = (state={}, action) => {
             })}
 
         case types.MARK_SUBTREE_COMPLETE:
-            console.log("payload:", action.payload)
             return { ...state, listContent: state.listContent.map((atom, index) => {
                 if(index >= action.payload.startIndex && index <= action.payload.stopIndex){
                     return { ...atom, completed: true}
@@ -81,7 +81,6 @@ export const listReducer = (state={}, action) => {
             })}
 
         case types.MARK_SUBTREE_UNCOMPLETE:
-            console.log("payload:", action.payload)
             return { ...state, listContent: state.listContent.map((atom, index) => {
                 if(index >= action.payload.startIndex && index <= action.payload.stopIndex){
                     return { ...atom, completed: false}
@@ -147,7 +146,8 @@ export const listReducer = (state={}, action) => {
                 //     action.payload.shift()
                 // }
             })}
-
+        case types.DELETE_NOTES:
+            return { ...state, listContent: state.listContent.map(atom => atom.id === action.payload? delete atom.notes && atom : atom  )}
         case types.NO_EMPTY_LIST:
             let newlistconent = []
             newlistconent.push(action.payload)
@@ -159,4 +159,8 @@ export const listReducer = (state={}, action) => {
         default:
             return state
     }
+
+    
+    
+
 }

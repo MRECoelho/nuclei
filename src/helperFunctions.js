@@ -71,11 +71,26 @@ export const tryUnindent = (list, atomId) => {
     }
 }
 
+export const getPreviousAtom = (atomId, tree) => {
+    const index = tree.findIndex(x => x.id === atomId);
+    const prev = tree.slice(0, index).reverse().find( (atom, i) => atom.hidden === false && i >= 0)
+    return prev? 
+        { prevExists: true, payload: prev.id}:
+        { prevExists: false, payload: null}
+}
+
+export const getNextAtom = (atomId, tree) => {
+    const index = tree.findIndex(x => x.id === atomId);
+    const next = tree.slice(index).find( (atom, i) => atom.hidden === false && i > 0)
+    return next ?
+        { nextExists: true, payload: next.id}:
+        { nextExists: false, payload: null} 
+}
+
 export const newAtom = (list, refAtomId, atomParams) => {
     const {subtree, startIndex} = getSubTree(list, refAtomId)
     const hasChildren = subtree.length === 1 ? false : true
 
-    
     if(hasChildren){
         // if ref atom has children, insert as first child
         return {
@@ -101,7 +116,6 @@ export const createAtom = (atomParams) => {
 
 const NEW_ATOM_TEMPLATE = {
     title: "",
-    notes: "",
     indent: 0,
     hidden: false,
 }

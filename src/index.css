@@ -138,6 +138,7 @@ main {
 }
 
 /* #list {
+  bordder: none;
   box-shadow: 0px 0px 10px black;
   margin-bottom: 20px;
   padding: 10px;
@@ -154,7 +155,7 @@ main {
 
 /* .header-left{
   background-color: var(--dark-background-0);
-}
+}s
 
 .header-right{
   background-color: var(--dark-background-0);
@@ -162,9 +163,10 @@ main {
 
 
 .listContainer{
-  list-style: none;
+  /* list-style: none; */
   margin: 0;
   padding-left: 0px;
+
 
 }
 .atomContainer {
@@ -275,3 +277,13 @@ border-top: 1px solid var(--dark-accent-300);
   background-color: #c65ba2;
   color: orange;
 }
+.keyhandler{
+  width: 100%;
+}
+
+
+.keyhandler:focus{
+  /* border: 0; */
+  outline:  none;
+}
+

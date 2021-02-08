@@ -18,12 +18,7 @@ const DragContext = props => {
         // subtreeDrag state. Due to the style tag in the render function, all atoms in the
         // subtreeDrag state will get new style to indicate which atoms are being dragged.
 		setSubtreeDrag(()=>{
-            // console.log("in setSubtreeDrag")
-            // console.log(props.list)
-            // console.log(atom.id)
-
 			const newSubtreeState = getSubTree(props.list, atom.id)
-			console.log("new subtree state: ", newSubtreeState)
 			return newSubtreeState
 		})
 	}
@@ -44,16 +39,10 @@ const DragContext = props => {
 		// in action nev list order will be calculated and applied
 		// reset atomDropRealtion
 		// stop visuals of drop zone
-
-		console.log("local ondrop for event ", e)
-		console.log("subtree is: ", subtreeDrag.subtree)
-		console.log("dropping ONTO: ", atom.id)
 		
 		const atomDropRelation = dndviz.calculateAtomToDropzoneRelation(e, subtreeDrag, props.list, atom, ref) 
 		if (subtreeDrag.subtree.length > 0){
 			console.log(`trying to drop subtree ${atomDropRelation} ${atom.id}`)
-			// const str = subtreeDrag.subtree.map(atom => atom.id).includes(e.id) ? "Drop onSELF" : "Valid drop"
-			// console.log(str)
 
 			// isValid? dispatch action to handle asycn stuff, then reducer for state/store mutation
 		}
