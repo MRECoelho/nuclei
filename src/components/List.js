@@ -1,12 +1,9 @@
-import React, {useEffect, useCallback} from 'react'
-import {fetchData, noEmptyList, indentSubtree} from '../store/actions'
+import React, {useEffect} from 'react'
+import {fetchData, noEmptyList} from '../store/actions'
 import { useDispatch,  useSelector } from 'react-redux'
 import Atom from './Atom'
 import DragContext from './DragContext'
-import {configure} from 'react-hotkeys';
 import Draggable from './Draggable'
-import KeyHandler from './KeyHandler'
-import { HotKeys } from 'react-hotkeys'
 
 export default function List() {
 

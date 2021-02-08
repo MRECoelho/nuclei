@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react'
 import { HotKeys } from 'react-hotkeys'
-import { useDispatch,  useSelector } from 'react-redux'
-import {fetchData, noEmptyList, indentSubtree, unindentSubtree, hideChildren, unhideChildren, toNextAtom, toPrevAtom, toNotes, deleteActions, addAtom} from '../store/actions'
+import { useDispatch } from 'react-redux'
+import { indentSubtree, unindentSubtree, hideChildren, unhideChildren, toNextAtom, toPrevAtom, toNotes, deleteActions, addAtom} from '../store/actions'
 
 const KeyHandler = props => {
     const dispatch = useDispatch()

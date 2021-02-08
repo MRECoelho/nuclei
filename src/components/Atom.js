@@ -1,12 +1,9 @@
-import React, {useState, useCallback} from 'react'
+import React, {useCallback} from 'react'
 import {editAtomContent} from '../store/actions'
 import AtomControl from './AtomControl'
 import Textarea from './Textarea'
 import {debounce} from 'lodash'
-import { HotKeys } from 'react-hotkeys'
-import TextareaAutosize from 'react-textarea-autosize'
-import {focusAtom, blurAtom} from '../store/actions'
-import { useDispatch,  useSelector } from 'react-redux'
+
 const Atom = props => {
 
     const {atom} = props

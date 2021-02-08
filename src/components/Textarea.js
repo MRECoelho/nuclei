@@ -1,10 +1,8 @@
 import React, {useState, useRef} from 'react'
 
-import {focusAtom, blurAtom, deleteEmptyNotes} from '../store/actions'
+import {focusAtom, blurAtom} from '../store/actions'
 import TextareaAutosize from 'react-textarea-autosize'
-import { HotKeys } from 'react-hotkeys'
-import {useEffect, useCallback} from 'react'
-import { useDispatch,  useSelector } from 'react-redux'
+import {useEffect} from 'react'
 
 const Textarea = (props) => {
     const [content, setContent] = useState(props.content)
