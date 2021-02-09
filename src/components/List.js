@@ -21,14 +21,12 @@ export default function List() {
     if (listState.listContent.length === 0) {
         noEmptyList()
 	}
-   
-    
 
 	return (
 		<>
-			  {/* {console.log("render: list")} */}
-				{listState.loadingData ? <h1> Loading data </h1> :
-				listState.listContent ? 
+			{/* {console.log("render: list")} */}
+			{listState.loadingData ? <h1> Loading data </h1> :
+			listState.listContent ? 
 				<DragContext list = {listState.listContent}>
 						{listState.listContent.map((atom) => {
 							return(
@@ -43,14 +41,12 @@ export default function List() {
 											focussedField={listState.focussedField}
 											
 											/> 
-								  </Draggable>
+									</Draggable>
 								)
 							})}
-					</DragContext>
-					:
-					
-					null
-            	}
+				</DragContext> :
+				null
+            }
         </>
     )
 }

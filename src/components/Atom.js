@@ -40,32 +40,20 @@ const Atom = props => {
         }
         return(
             <Textarea
-                    // name={name}
-                    // value={value}
-                    // setContent={setContent}
-                    // ref = {ref => props.focussed? ref.focus(): null}
-                    focussed = {props.focussed}
-                    focussedField = {props.focussedField}
-                    { ...textAreaProps }
+                focussed = {props.focussed}
+                focussedField = {props.focussedField}
+                { ...textAreaProps }
             ></Textarea>
         )
     }
 
     return (
         <div className={"atomContainer"} style={{marginLeft:atom.indent*35 + 20/(1+atom.indent)}}>
-
             {/* {console.log("render: ", atom.id)} */}
-            
-            <AtomControl 
-                atom={atom} 
-                
-            />
-            
+            <AtomControl atom={atom}/>
             <div className="atomContentContainer">
                 {createTextAreaComponent("title", atom.title)}
-
                 {atom.notes !== undefined ? createTextAreaComponent("notes", atom.notes ) : null}
-                
             </div>
          </div>
     )
@@ -73,8 +61,9 @@ const Atom = props => {
 
 
 function equalityCheck(prev, next) {
-    // even though the dispatch function will not be updated in the case thast a atom
-    // seems equal, the caching of that function will not interfere...
+    // Even though the dispatch function will not be updated in the case thast a atom
+    // seems equal, the caching of that function will not interfere with the functionality of 
+    // the component.
  
     return prev.atom.title === next.atom.title &&
     prev.atom.notes === next.atom.notes &&
