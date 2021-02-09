@@ -174,7 +174,21 @@ export const listReducer = (state = {}, action) => {
 
         case types.REORDER_LIST:
             return { ...state, listContent: action.payload }
+        case types.MOVE_SUBTREE:
 
+
+            const workingTree = state.listContent.slice()
+            // console.log("working tree: 1", workingTree.slice())
+            workingTree.splice(action.payload.deleteRangeStart, action.payload.deleteRangeCount)
+            // console.log(workingTree)
+            // console.log("working tree: 2", workingTree.slice(), action.payload.instertAfterAtomId)
+            const insertAfterIndex = workingTree.findIndex(atom => atom.id === action.payload.instertAfterAtomId)
+            console.log("after:", insertAfterIndex)
+            workingTree.splice(insertAfterIndex+1, 0, ...action.payload.subtree)
+            console.log("working tree: 3", workingTree.slice())
+            return {
+                ...state, listContent: workingTree
+            }
         default:
             return state
     }

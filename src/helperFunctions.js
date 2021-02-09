@@ -27,7 +27,23 @@ export const getSubTree = (list, atomId) => {
     return {subtree, startIndex, stopIndex} 
 }
 
-
+export const nextSibling = (list, atomId) => {
+    let selfIndex= -1
+    let selfAtom = {}
+    let result = {}
+    for (let [index, atom]of list.entries()) {
+        if (atom.id === atomId){
+            selfIndex = index
+            selfAtom = atom
+        } else if ( selfIndex !== -1 && atom.indent === selfAtom.indent ) {
+            result = {index, atom}
+            break
+        } else if ( selfIndex !== -1 && atom.indent < selfAtom.indent ) {
+            break
+        }
+    }
+    return result
+}
 
 export const isAtomInSubTree = (atom, subtree) => {
     return subtree.map(atom => atom.id).includes(atom.id)

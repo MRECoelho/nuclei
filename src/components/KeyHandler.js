@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import { useDispatch } from 'react-redux'
-import { indentSubtree, unindentSubtree, hideChildren, unhideChildren, toNextAtom, toPrevAtom, toNotes, deleteActions, addAtom } from '../store/actions'
+import { indentSubtree, unindentSubtree, hideChildren, unhideChildren, toNextAtom, toPrevAtom, toNotes, deleteActions, addAtom, move_subtree_down } from '../store/actions'
 
 const KeyHandler = props => {
     const dispatch = useDispatch()
@@ -18,8 +18,8 @@ const KeyHandler = props => {
         DELETE_ACTIONS: "backspace",
         FORCE_DELETE_ACTIONS: "ctrl+backspace",
         // CONSOLE:"ctrl+`" // FUTURE IMPL: add more advanced commands, vim like behaviour
-        // MOVE_ATOM_UP: "ctrl+shift+ArrowUp",
-        // MOVE_ATOM_DOWN: "ctrl+shift+ArrowDown",
+        MOVE_ATOM_UP: "ctrl+shift+ArrowUp",
+        MOVE_ATOM_DOWN: "ctrl+shift+ArrowDown",
         // SEARCH: "alt+s",
         // INDENT: "tab",
         // UNINDENT: "shift+tab",
@@ -43,8 +43,8 @@ const KeyHandler = props => {
         FORCE_DELETE_ACTIONS: useCallback((event) => { event.preventDefault(); dispatch(deleteActions(true)) }, [dispatch],),
         // CONSOLE:  useCallback((event) => {  console.log("entering console") },[],),
         // OUTDENT_ATOM:  useCallback((event) => { event.preventDefault();console.log("outdent atom called") }, []),
-        // MOVE_ATOM_UP:  useCallback((event) => { event.preventDefault();console.log("move up atom called") }, []),
-        // MOVE_ATOM_DOWN:  useCallback((event) => { event.preventDefault();console.log("move down atom called") }, []),
+        MOVE_ATOM_UP:  useCallback((event) => { event.preventDefault();console.log("move up atom called") }, []),
+        MOVE_ATOM_DOWN:  useCallback((event) => { event.preventDefault();console.log("move down atom called"); dispatch(move_subtree_down()) }, [dispatch]),
         // SEARCH:  useCallback((event) => { event.preventDefault();console.log("search called") }, []),
         // ADD_ATOM: useCallback((event) => { console.log("add atom called") }, []),
         // ANOTHER_ATOM: useCallback((event) => { console.log("antoerh atom called") }, []),

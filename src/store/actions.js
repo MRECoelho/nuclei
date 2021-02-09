@@ -1,7 +1,7 @@
 import * as types from './types'
 import Localbase from 'localbase'
 import { v4 as uuidv4 } from "uuid";
-import { getSubTree, tryIndent, tryUnindent, newAtom, createAtom, getNextAtom, getPreviousAtom } from '../helperFunctions'
+import { getSubTree, tryIndent, tryUnindent, newAtom, createAtom, getNextAtom, getPreviousAtom, nextSibling } from '../helperFunctions'
 
 const databaseName = 'atomDB'
 const atomCollection = 'atoms'
@@ -348,7 +348,32 @@ export const deleteAtom = (atomId, force = false) => async (dispatch, getState) 
 }
 
 export const move_subtree_up = (param) => async (dispatch) => { }
-export const move_subtree_down = (param) => async (dispatch) => { }
+export const move_subtree_down = () => async (dispatch, getState) => {
+    const {focussedAtomId, listContent} = getState().list
+    const {subtree, startIndex, stopIndex} = getSubTree(listContent, focussedAtomId)
+    if( stopIndex === listContent.length -1){
+        // cant move subtree lower since no nnext atom exists
+    } else {
+        const next = nextSibling(listContent, focussedAtomId)
+
+        if( Object.entries(next).length !== 0){
+            let nextStopIndex = getSubTree(listContent, next.atom.id).stopIndex
+            let instertAfterAtomId = listContent[nextStopIndex].id
+
+            dispatch({
+                type: types.MOVE_SUBTREE,
+                payload:{
+                    deleteRangeStart:  startIndex,
+                    deleteRangeCount:  stopIndex - startIndex +1,
+                    instertAfterAtomId,
+                    subtree
+                }
+            })
+        }
+
+    }
+
+ }
 
 export const get_list = (param) => async (dispatch) => { }
 export const get_lists = (param) => async (dispatch) => { }
